@@ -59,6 +59,10 @@ export default class NotesView {
         // Empty list
         notesListContainer.innerHTML = "";
 
+        // Sort the array based on the 'updated' property
+        notes.sort((a,b)=> a.updated - b.updated);
+        // console.log(notes);
+
         for (const note of notes) {
             const html = this._createListItemHTML(note.id, note.title, note.body, new Date(note.updated));
 
