@@ -18,7 +18,7 @@ body {
     flex-shrink: 0;
     overflow-y: auto;
     padding: 1em;
-    width: 300px;
+    width: 30%;
 }
 
 .notes__add {
@@ -72,6 +72,7 @@ body {
     flex-direction: column;
     padding: 2em 3em;
     flex-grow: 1;
+    width: 70%;
 }
 
 .notes__title,
@@ -93,3 +94,23 @@ body {
     margin-top: 2em;
     resize: none;
 }
+
+
+
+@media only screen and (max-width: 767px) {
+    .notes{
+        display: flex;
+        flex-direction: column-reverse;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .notes__sidebar{
+        width: 90%;
+    }
+
+    .notes__preview{
+        width: 90%;
+        
+    }
+  }
