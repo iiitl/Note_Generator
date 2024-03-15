@@ -35,8 +35,9 @@ Note Generator is an open-source project, and contributions of any kind are welc
  Contributor
  </td>
  <td align="center"><a href="https://github.com/rishyym0927">
+   <img src="https://avatars.githubusercontent.com/u/119918405?s=96&v=4" width="50px;" alt=""/>
    <br />
-   <sub><b>Rishyym</b></sub>
+   <sub><b>Your Name</b></sub>
  </a>
  <br />
  Contributor
