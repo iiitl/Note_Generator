@@ -66,6 +66,9 @@ export default class App {
             onSortDescending: () => {
                 NotesAPI.sortNotes(false);
                 this._refreshNotes();
+            },
+            onToggleTheme: () => {
+                NotesAPI.toggleTheme();
             }
         };
     }

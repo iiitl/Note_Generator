@@ -1,5 +1,5 @@
 export default class NotesView {
-    constructor(root, { onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete, onSortAscending, onSortDescending } = {}) {
+    constructor(root, { onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete, onSortAscending, onSortDescending, onToggleTheme } = {}) {
         this.root = root;
         this.onNoteSelect = onNoteSelect;
         this.onNoteAdd = onNoteAdd;
@@ -7,8 +7,10 @@ export default class NotesView {
         this.onNoteDelete = onNoteDelete;
         this.onSortAscending = onSortAscending;
         this.onSortDescending = onSortDescending;
+        this.onToggleTheme = onToggleTheme;
         this.root.innerHTML = `
             <div class="notes__sidebar">
+                <button class="btnToggleTheme" type="button" >Dark Mode</button>
                 <button class="notes__add" type="button">Add Note</button>
                 <div class="sortBtns" >
                     <button class="sort__asc notes__sort" type="button">sort up</button> 
@@ -27,6 +29,7 @@ export default class NotesView {
         const inpBody = this.root.querySelector(".notes__body");
         const btnSortAsc = this.root.querySelector(".sort__asc");
         const btnSortDec = this.root.querySelector(".sort__dec");
+        const btnToggleTheme = this.root.querySelector(".btnToggleTheme");
 
         btnAddNote.addEventListener("click", () => {
             this.onNoteAdd();
@@ -37,7 +40,16 @@ export default class NotesView {
         btnSortDec.addEventListener("click",()=>{
             this.onSortDescending();
         });
+        btnToggleTheme.addEventListener("click",()=>{
+            this.onToggleTheme();
+        });
         
+
+        const ui__theme = document.documentElement.classList.value;
+        const notesBox = document.querySelector(".notes");
+        if(ui__theme=="dark"){
+            notesBox.classList.add("dark");
+        }
         
 
         [inpTitle, inpBody].forEach(inputField => {

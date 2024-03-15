@@ -8,7 +8,6 @@ export default class NotesAPI {
     static saveNote(noteToSave) {
         const notes = NotesAPI.getAllNotes();
         const existing = notes.find(note => note.id == noteToSave.id);
-
         // Edit/Update
         if (existing) {
             existing.title = noteToSave.title;
@@ -37,5 +36,22 @@ export default class NotesAPI {
             return order ? (date1 - date2) : (date2 - date1);
         });
         localStorage.setItem("notesapp-notes", JSON.stringify(notes));
+    }
+    static toggleTheme() {
+        const btnToggleTheme = document.querySelector(".btnToggleTheme");
+        const ui__theme = document.documentElement.classList.value;
+        console.log(ui__theme, typeof(ui__theme))
+        const notesBox = document.querySelector(".notes");
+
+        if(ui__theme!="dark"){
+            notesBox.classList.add("dark");
+            btnToggleTheme.textContent = "Light Mode";
+        }
+        else{
+            notesBox.classList.remove("dark");
+            btnToggleTheme.textContent = "Dark Mode";
+        }
+        console.dir(notesBox);
+        console.log(document.documentElement.classList.toggle("dark"));
     }
 }
