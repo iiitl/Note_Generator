@@ -59,6 +59,14 @@ export default class App {
                 NotesAPI.deleteNote(noteId);
                 this._refreshNotes();
             },
+            onSortAscending: () => {
+                NotesAPI.sortNotes(true);
+                this._refreshNotes();
+            },
+            onSortDescending: () => {
+                NotesAPI.sortNotes(false);
+                this._refreshNotes();
+            }
         };
     }
 }

@@ -34,6 +34,22 @@ body {
     width: 100%;
 }
 
+.sortBtns{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px 0;
+}
+.notes__sort{
+    background-color: #09946b;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
 .notes__add:hover {
     background: #00af8c;
 }

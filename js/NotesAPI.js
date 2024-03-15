@@ -31,4 +31,10 @@ export default class NotesAPI {
 
         localStorage.setItem("notesapp-notes", JSON.stringify(newNotes));
     }
+    static sortNotes(ascending) {
+        const notes = NotesAPI.getAllNotes();
+        const newNotes = notes.sort((a,b) => (ascending)? (a.updated - b.updated): (b.updated - a.updated));
+        console.log(newNotes);
+        localStorage.setItem("notesapp-notes", JSON.stringify(newNotes));
+    }
 }

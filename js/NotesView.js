@@ -1,13 +1,19 @@
 export default class NotesView {
-    constructor(root, { onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete } = {}) {
+    constructor(root, { onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete, onSortAscending, onSortDescending } = {}) {
         this.root = root;
         this.onNoteSelect = onNoteSelect;
         this.onNoteAdd = onNoteAdd;
         this.onNoteEdit = onNoteEdit;
         this.onNoteDelete = onNoteDelete;
+        this.onSortAscending = onSortAscending;
+        this.onSortDescending = onSortDescending;
         this.root.innerHTML = `
             <div class="notes__sidebar">
                 <button class="notes__add" type="button">Add Note</button>
+                <div class="sortBtns" >
+                    <button class="sort__asc notes__sort" type="button">sort up</button> 
+                    <button class="sort__dec notes__sort" type="button">sort down</button> 
+                </div>
                 <div class="notes__list"></div>
             </div>
             <div class="notes__preview">
@@ -19,10 +25,20 @@ export default class NotesView {
         const btnAddNote = this.root.querySelector(".notes__add");
         const inpTitle = this.root.querySelector(".notes__title");
         const inpBody = this.root.querySelector(".notes__body");
+        const btnSortAsc = this.root.querySelector(".sort__asc");
+        const btnSortDec = this.root.querySelector(".sort__dec");
 
         btnAddNote.addEventListener("click", () => {
             this.onNoteAdd();
         });
+        btnSortAsc.addEventListener("click",()=>{
+            this.onSortAscending();
+        });
+        btnSortDec.addEventListener("click",()=>{
+            this.onSortDescending();
+        });
+        
+        
 
         [inpTitle, inpBody].forEach(inputField => {
             inputField.addEventListener("blur", () => {
@@ -59,9 +75,6 @@ export default class NotesView {
         // Empty list
         notesListContainer.innerHTML = "";
 
-        // Sort the array based on the 'updated' property
-        notes.sort((a,b)=> a.updated - b.updated);
-        // console.log(notes);
 
         for (const note of notes) {
             const html = this._createListItemHTML(note.id, note.title, note.body, new Date(note.updated));
@@ -99,4 +112,6 @@ export default class NotesView {
     updateNotePreviewVisibility(visible) {
         this.root.querySelector(".notes__preview").style.visibility = visible ? "visible" : "hidden";
     }
+
+
 }
