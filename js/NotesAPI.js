@@ -31,8 +31,11 @@ export default class NotesAPI {
     }
     static sortNotes(order) {
         const notes = NotesAPI.getAllNotes();
-        notes.sort((obj1,obj2) => ((order)? (new Date(obj1.updated) - new Date(obj2.updated)): (new Date(obj2.updated) - new Date(obj1.updated))));
-        
+        notes.sort((obj1, obj2) => {
+            const date1 = new Date(obj1.updated);
+            const date2 = new Date(obj2.updated);
+            return order ? (date1 - date2) : (date2 - date1);
+        });
         localStorage.setItem("notesapp-notes", JSON.stringify(notes));
     }
 }
