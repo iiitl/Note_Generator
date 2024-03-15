@@ -2,9 +2,7 @@ export default class NotesAPI {
     static getAllNotes() {
         const notes = JSON.parse(localStorage.getItem("notesapp-notes") || "[]");
 
-        return notes.sort((a, b) => {
-            return new Date(a.updated) > new Date(b.updated) ? -1 : 1;
-        });
+        return notes;
     }
 
     static saveNote(noteToSave) {
@@ -31,10 +29,10 @@ export default class NotesAPI {
 
         localStorage.setItem("notesapp-notes", JSON.stringify(newNotes));
     }
-    static sortNotes(ascending) {
+    static sortNotes(order) {
         const notes = NotesAPI.getAllNotes();
-        const newNotes = notes.sort((a,b) => (ascending)? (a.updated - b.updated): (b.updated - a.updated));
-        console.log(newNotes);
-        localStorage.setItem("notesapp-notes", JSON.stringify(newNotes));
+        notes.sort((obj1,obj2) => ((order)? (new Date(obj1.updated) - new Date(obj2.updated)): (new Date(obj2.updated) - new Date(obj1.updated))));
+        
+        localStorage.setItem("notesapp-notes", JSON.stringify(notes));
     }
 }
