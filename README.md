@@ -29,7 +29,14 @@ Note Generator is an open-source project, and contributions of any kind are welc
  <td align="center"><a href="https://github.com/AkhileshJyotishi">
    <img src="https://avatars.githubusercontent.com/u/119918405?s=96&v=4" width="50px;" alt=""/>
    <br />
-   <sub><b>Akhilesh Jyotihi</b></sub>
+   <sub><b>Akhilesh Jyotishi</b></sub>
+ </a>
+ <br />
+ Contributor
+ </td>
+ <td align="center"><a href="https://github.com/rishyym0927">
+   <br />
+   <sub><b>Rishyym</b></sub>
  </a>
  <br />
  Contributor
