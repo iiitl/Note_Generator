@@ -55,6 +55,9 @@ body {
 
 .notes__small-title {
     font-size: 1.2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .notes__small-body {
