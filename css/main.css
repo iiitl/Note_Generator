@@ -93,3 +93,15 @@ body {
     margin-top: 2em;
     resize: none;
 }
+
+@media screen and (max-width: 670px) {
+    .notes {
+        flex-direction: column-reverse;
+    }
+
+    .notes__sidebar {
+        width: 100%;
+        border-top: 2px solid #dddddd;
+        max-height: 300px;
+    }
+}
