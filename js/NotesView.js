@@ -55,8 +55,8 @@ export default class NotesView {
             <div class="notes__list-item" data-note-id="${id}">
                 <div class="notes__small-title">${title}</div>
                 <div class="notes__small-body">
-                    ${body.substring(0, MAX_BODY_LENGTH)}
-                    ${body.length > MAX_BODY_LENGTH ? "..." : ""}
+                    <p>${body.substring(0, MAX_BODY_LENGTH)}</p>
+                    <p>${body.length > MAX_BODY_LENGTH ? "..." : ""}</p>
                 </div>
                 <div class="notes__small-updated">
                     ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}

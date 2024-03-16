@@ -41,6 +41,7 @@ body {
 
 .notes__list-item {
     cursor: pointer;
+    overflow-wrap: break-word;
 }
 
 .notes__list-item--selected {
