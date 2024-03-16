@@ -7,6 +7,9 @@ export default class NotesView {
         this.onNoteDelete = onNoteDelete;
         this.root.innerHTML = `
             <div class="notes__sidebar">
+                <div class="mode" id="modeToggle">
+                    Dark Mode
+                </div>
                 <button class="notes__add" type="button">Add Note</button>
                 <div class="notes__list"></div>
             </div>
@@ -19,9 +22,14 @@ export default class NotesView {
         const btnAddNote = this.root.querySelector(".notes__add");
         const inpTitle = this.root.querySelector(".notes__title");
         const inpBody = this.root.querySelector(".notes__body");
+        const modeToggle = this.root.querySelector("#modeToggle");
 
         btnAddNote.addEventListener("click", () => {
             this.onNoteAdd();
+        });
+
+        modeToggle.addEventListener("click", () => {
+            this.toggleDarkMode();
         });
 
         [inpTitle, inpBody].forEach(inputField => {
@@ -34,6 +42,10 @@ export default class NotesView {
         });
 
         this.updateNotePreviewVisibility(false);
+    }
+
+    toggleDarkMode() {
+        this.root.classList.toggle("dark-mode");
     }
 
     _createListItemHTML(id, title, body, updated) {
