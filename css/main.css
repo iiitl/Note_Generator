@@ -1,3 +1,4 @@
+/* main.css */
 html,
 body {
     height: 100%;
@@ -7,13 +8,10 @@ body {
 .notes {
     display: flex;
     height: 100%;
-    
 }
-
 
 .notes * {
     font-family: sans-serif;
-    
 }
 
 .notes__sidebar {
@@ -35,7 +33,6 @@ body {
     margin-bottom: 1em;
     padding: 0.75em 0;
     width: 100%;
-    
 }
 
 .notes__add:hover {
@@ -98,6 +95,19 @@ body {
     resize: none;
 }
 
+.mode {
+    background: #000;
+    display: flex;
+    width: 140px;
+    color: white;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
 @media screen and (max-width: 670px) {
     .notes {
         flex-direction: column-reverse;
@@ -108,4 +118,22 @@ body {
         border-top: 2px solid #dddddd;
         max-height: 300px;
     }
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode .notes__sidebar {
+    border-right-color: #666;
+}
+
+.dark-mode .notes__add {
+    background: #00695c;
+}
+
+.dark-mode .notes__list-item--selected {
+    background: #444;
 }
