@@ -7,10 +7,13 @@ body {
 .notes {
     display: flex;
     height: 100%;
+    
 }
+
 
 .notes * {
     font-family: sans-serif;
+    
 }
 
 .notes__sidebar {
@@ -32,6 +35,7 @@ body {
     margin-bottom: 1em;
     padding: 0.75em 0;
     width: 100%;
+    
 }
 
 .notes__add:hover {
@@ -92,4 +96,16 @@ body {
     line-height: 1.5;
     margin-top: 2em;
     resize: none;
+}
+
+@media screen and (max-width: 670px) {
+    .notes {
+        flex-direction: column-reverse;
+    }
+
+    .notes__sidebar {
+        width: 100%;
+        border-top: 2px solid #dddddd;
+        max-height: 300px;
+    }
 }
