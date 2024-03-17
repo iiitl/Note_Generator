@@ -51,6 +51,10 @@ body {
 .notes__small-title,
 .notes__small-updated {
     padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  
 }
 
 .notes__small-title {
