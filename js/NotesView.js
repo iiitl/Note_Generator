@@ -23,6 +23,7 @@ export default class NotesView {
         const inpTitle = this.root.querySelector(".notes__title");
         const inpBody = this.root.querySelector(".notes__body");
         const modeToggle = this.root.querySelector("#modeToggle");
+        const button = this.root.querySelector(".mode");
 
         btnAddNote.addEventListener("click", () => {
             this.onNoteAdd();
@@ -30,6 +31,16 @@ export default class NotesView {
 
         modeToggle.addEventListener("click", () => {
             this.toggleDarkMode();
+            
+            if (this.root.classList.contains('dark-mode'))
+            {
+                button.innerHTML = 'Light Mode';
+            }
+            else 
+            {
+                button.innerHTML = 'Dark Mode'
+            }
+            
         });
 
         [inpTitle, inpBody].forEach(inputField => {
