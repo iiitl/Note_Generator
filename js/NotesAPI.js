@@ -31,4 +31,19 @@ export default class NotesAPI {
 
         localStorage.setItem("notesapp-notes", JSON.stringify(newNotes));
     }
+
+    static toggleTheme() {
+        const btnToggleTheme = document.querySelector(".btnToggleTheme");
+        const ui__theme = document.documentElement.classList.value;
+        const notesBox = document.querySelector(".notes");
+
+        if(ui__theme!="dark"){
+            notesBox.classList.add("dark");
+            btnToggleTheme.textContent = "Light Mode";
+        }
+        else{
+            notesBox.classList.remove("dark");
+            btnToggleTheme.textContent = "Dark Mode";
+        }
+    }
 }

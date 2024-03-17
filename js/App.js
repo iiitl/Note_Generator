@@ -59,6 +59,9 @@ export default class App {
                 NotesAPI.deleteNote(noteId);
                 this._refreshNotes();
             },
+            onToggleTheme: () => {
+                NotesAPI.toggleTheme();
+            },
         };
     }
 }

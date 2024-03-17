@@ -1,12 +1,14 @@
 export default class NotesView {
-    constructor(root, { onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete } = {}) {
+    constructor(root, { onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete, onToggleTheme } = {}) {
         this.root = root;
         this.onNoteSelect = onNoteSelect;
         this.onNoteAdd = onNoteAdd;
         this.onNoteEdit = onNoteEdit;
         this.onNoteDelete = onNoteDelete;
+        this.onToggleTheme = onToggleTheme;
         this.root.innerHTML = `
             <div class="notes__sidebar">
+                <button class="btnToggleTheme" type="button" >Dark Mode</button>
                 <button class="notes__add" type="button">Add Note</button>
                 <div class="notes__list"></div>
             </div>
@@ -19,10 +21,21 @@ export default class NotesView {
         const btnAddNote = this.root.querySelector(".notes__add");
         const inpTitle = this.root.querySelector(".notes__title");
         const inpBody = this.root.querySelector(".notes__body");
+        const btnToggleTheme = this.root.querySelector(".btnToggleTheme");
 
         btnAddNote.addEventListener("click", () => {
             this.onNoteAdd();
         });
+        btnToggleTheme.addEventListener("click", () => {
+            this.onToggleTheme();
+        });
+
+
+        const ui__theme = document.documentElement.classList.value;
+        const notesBox = document.querySelector(".notes");
+        if (ui__theme == "dark") {
+            notesBox.classList.add("dark");
+        }
 
         [inpTitle, inpBody].forEach(inputField => {
             inputField.addEventListener("blur", () => {
