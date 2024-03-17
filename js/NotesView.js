@@ -8,7 +8,8 @@ export default class NotesView {
         this.root.innerHTML = `
             <div class="notes__sidebar">
                 <button class="notes__add" type="button">Add Note</button>
-                <div class="notes__list"></div>
+                <div class="notes__list_starred containers"></div>
+                <div class="notes__list containers"></div>
             </div>
             <div class="notes__preview">
                 <input class="notes__title" type="text" placeholder="New Note...">
@@ -19,6 +20,8 @@ export default class NotesView {
         const btnAddNote = this.root.querySelector(".notes__add");
         const inpTitle = this.root.querySelector(".notes__title");
         const inpBody = this.root.querySelector(".notes__body");
+        const draggables = document.querySelectorAll('.draggable')
+        const containers = document.querySelectorAll('.container')
 
         btnAddNote.addEventListener("click", () => {
             this.onNoteAdd();
@@ -34,13 +37,37 @@ export default class NotesView {
         });
 
         this.updateNotePreviewVisibility(false);
+        
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', () => {
+          draggable.classList.add('dragging')
+        })
+      
+        draggable.addEventListener('dragend', () => {
+          draggable.classList.remove('dragging')
+        })
+        })
+      
+      containers.forEach(container => {
+        container.addEventListener('dragover', e => {
+          e.preventDefault()
+            document.head.title = "dragging"
+          const afterElement = getDragAfterElement(container, e.clientY)
+          const draggable = document.querySelector('.dragging')
+          if (afterElement == null) {
+            container.appendChild(draggable)
+          } else {
+            container.insertBefore(draggable, afterElement)
+          }
+        })
+      })
     }
 
     _createListItemHTML(id, title, body, updated) {
         const MAX_BODY_LENGTH = 60;
 
         return `
-            <div class="notes__list-item" data-note-id="${id}">
+            <div class="notes__list-item draggable" draggable="true" data-note-id="${id}">
                 <div class="notes__small-title">${title}</div>
                 <div class="notes__small-body">
                     ${body.substring(0, MAX_BODY_LENGTH)}
@@ -95,4 +122,23 @@ export default class NotesView {
     updateNotePreviewVisibility(visible) {
         this.root.querySelector(".notes__preview").style.visibility = visible ? "visible" : "hidden";
     }
+    
+    
+
+
+  
+   getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+  
+    return draggableElements.reduce((closest, child) => {
+      const box = child.getBoundingClientRect()
+      const offset = y - box.top - box.height / 2
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child }
+      } else {
+        return closest
+      }
+    }, { offset: Number.NEGATIVE_INFINITY }).element
+  }
 }
+

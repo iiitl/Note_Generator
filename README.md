@@ -6,6 +6,17 @@ Note Generator is a note-taking app for the web.
 
 It is a static site without a database, notes are persisted temporarily in local storage
 
+
+It provides following features
+
+1. Adding a note
+2. Updating the note
+3. Deleting any note by double-clicking it
+4. Sort the notes by updated date
+5. Uses local storage hence data is available even after refreshing or closing window and safe also as it does not sends it anywhere
+6. drag and drop the notes in starred category 
+7. night mode to make it developer friendly XD
+
 ## Pre Installation
 
 - [ ] Install the live - server extension in your favorite text editor( ...really helpful)
