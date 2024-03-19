@@ -93,3 +93,26 @@ body {
     margin-top: 2em;
     resize: none;
 }
+@media screen and (max-width: 600px)
+{
+    
+        .notes {
+            flex-direction: column;
+        }
+    
+        .notes__sidebar {
+            width: 100%;
+            border-right: none;
+            border-bottom: 2px solid #dddddd;
+        }
+    
+        .notes__preview {
+            padding: 1em;
+        }
+    
+        .notes__title {
+            font-size: 2em;
+        }
+    
+    
+}
